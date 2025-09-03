@@ -1,0 +1,67 @@
+*JavaScript Code for Photographer Portfolio*
+
+Here's a more detailed JavaScript code for a photographer portfolio website:
+// Gallery Filter
+const gallery = document.querySelector('.gallery');
+const filterButtons = document.querySelectorAll('.filter-button');
+
+filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const filterValue = button.getAttribute('data-filter');
+        const images = gallery.children;
+        for (let i = 0; i < images.length; i++) {
+            if (filterValue === 'all') {
+                images[i].style.display = 'block';
+            } else if (images[i].classList.contains(filterValue)) {
+                images[i].style.display = 'block';
+            } else {
+                images[i].style.display = 'none';
+            }
+        }
+    });
+});
+
+// Lightbox
+const images = document.querySelectorAll('.gallery img');
+const lightbox = document.querySelector('.lightbox');
+const lightboxImage = document.querySelector('.lightbox img');
+const closeButton = document.querySelector('.close-button');
+
+images.forEach((image) => {
+    image.addEventListener('click', () => {
+        lightbox.style.display = 'block';
+        lightboxImage.src = image.src;
+    });
+});
+
+closeButton.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+});
+
+// Form Validation
+const form = document.querySelector('form');
+const nameInput = document.querySelector('input[type="text"]');
+const emailInput = document.querySelector('input[type="email"]');
+const messageInput = document.querySelector('textarea');
+const submitButton = document.querySelector('button[type="submit"]');
+
+submitButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (nameInput.value && emailInput.value && messageInput.value) {
+        console.log('Message sent!');
+        // Send the message (you can add your own logic here)
+    } else {
+        console.log('Please fill out all fields.');
+    }
+});
+
+// Smooth Scrolling
+const links = document.querySelectorAll('a[href^="#"]');
+
+links.forEach((link) => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        target.scrollIntoView({ behavior: 'smooth' });
+    });
+.
